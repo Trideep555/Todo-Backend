@@ -1,8 +1,10 @@
 const express = require('express')    // import
+require('dotenv').config()
 const bodyParser = require('body-parser')
 const cookie_parser = require('cookie-parser') 
 const app = express() // server initialization
-const port = 8000
+const port = process.env.PORT;
+
 
 
 app.use(cookie_parser()) 
