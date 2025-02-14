@@ -1,14 +1,11 @@
 import './App.css'
-import Effect from './components/Effect';
-import Form from './components/Form'
-
+import Todo from './components/Todo'
 
 function App() {
-  const x=5;
+  
   return (
     <>
-    <Effect />
-    
+    <Todo />
     </>
   )
 }
