@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 
 app.use("/todo",require('./routes/todo.routes'))
 app.use("/items",require('./routes/items.routes'))
+app.use("/college",require('./routes/college.routes'))
 
 
 // 3 layer -- client -- server -- database
