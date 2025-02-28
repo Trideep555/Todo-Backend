@@ -6,7 +6,7 @@ router.get("/",todo.get)
 
 router.post("/",todo.add)
 
-router.put("/",todo.edit)
+router.put("/:id",todo.edit)
 
 router.delete("/",todo.delet)
 
