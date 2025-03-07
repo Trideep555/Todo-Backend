@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { insert,editValue, deleteValue, searchByValue } from "./TodoSlice";
+import { insert,editValue, deleteValue, searchByValue, fetchTodos } from "./TodoSlice";
 
 export default function Todo(){
     const [value,setValue]=useState("");
     const [edit,setEdit] = useState(-1);
     const [search,setSearch] = useState("");
-    const todoredux = useSelector(state=>state.todo);
+    const todoredux  = useSelector(state=>state.todo);
     const dispatch = useDispatch();
-
-    
+    useEffect(()=> {
+      dispatch(fetchTodos());
+      
+    },[dispatch])
+    console.log(todoredux);
     const HandleChange=(e)=>{
         setValue(e.target.value);
     }
@@ -60,15 +63,15 @@ export default function Todo(){
     </tr>
   </thead>
   <tbody>
-    {todoredux.map((item,index)=>(
+    {todoredux.status =="Completed" ? todoredux.todos.map((item,index)=>(
         <>
-        <tr key={index}>
+        <tr key={item.id}>
             <th>{index+1}</th>
-            <td>{item}</td>
+            <td>{item.title}</td>
             <td ><i className="fa-solid fa-pen cursor-pointer" onClick={()=>HandleEdit(index)} style={{cursor:"pointer"}}></i><i className="ms-4 fa-solid fa-trash" onClick={()=>HandleDelete(index)} style={{cursor:"pointer"}}></i></td>
         </tr>
         </>
-    ))}
+    )) : "Loading..."}
   </tbody>
   </table>
     

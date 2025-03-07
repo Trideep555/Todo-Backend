@@ -1,8 +1,22 @@
 const conn = require("../db/db");
 
 
-const get = (req,res) => {
-    res.send("this is todo get")
+const get = async (req,res) => {
+    try{
+        //const state = req.query['state']; ?state= 
+        const state = req.body;
+
+        /* console.log(state);
+        res.json(state);
+        */
+        const [result] = await conn.query(`Select * FROM tasks order by id`);
+        res.status(200).json(result);
+        /* res.json(result); */   
+  }
+      catch(e) {
+          console.log(e);
+          res.status(500).send("Something went wrong");        
+      }
 }
 const add = async (req,res) => {
     try{
