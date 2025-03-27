@@ -6,6 +6,11 @@ export const fetchTodos = createAsyncThunk("todo/fetchTodos" , async () => {
     //console.log(response);
     return response.data;
 })
+export const insertTodos = createAsyncThunk("todo/insertTodos" , async (data) => {
+    const response = await axios.post("http://localhost:8000/todo",data);
+    //console.log(response);
+    return response;
+})
 
 export const TodoSlice = createSlice({
     name:"todo",
@@ -15,7 +20,7 @@ export const TodoSlice = createSlice({
     },
     reducers : {
         insert : function(state,action){
-            state.push(action.payload);
+            console.log(insertTodos(action.payload));
         },
         editValue : function(state,action){
             state[action.payload.index] = action.payload.value;
