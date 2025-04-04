@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+<<<<<<< Updated upstream
+=======
+    "axios": "^1.8.4",
+>>>>>>> Stashed changes
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.2",
