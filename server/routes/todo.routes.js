@@ -8,6 +8,6 @@ router.post("/",todo.add)
 
 router.put("/:id",todo.edit)
 
-router.delete("/",todo.delet)
+router.delete("/:id",todo.delet)
 
 module.exports=router

@@ -54,8 +54,21 @@ const edit = async (req,res) => {
       }
   }
 
-const delet  = (req,res) => {
-    res.send("this is todo delete")
+const delet  = async (req,res) => {
+    try{
+        const id  = req.params.id;
+        /* console.log(state);
+        res.json(state);
+        */
+        const [result] = await conn.query(`DELETE FROM tasks where id=${id}`);
+        res.status(200).json({msg:"Data Deleted Successfully"})
+        /* res.json(result); */   
+  }
+      catch(e) {
+          console.log(e);
+          res.status(500).send("Something went wrong");        
+      }
+ 
 }
 
 module.exports = {get,add,edit,delet}
