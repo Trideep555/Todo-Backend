@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { insert,editValue, deleteValue, searchByValue, fetchTodos ,insertTodos, editTodos, deleteTodos } from "./TodoSlice";
+import {  fetchTodos ,insertTodos, editTodos, deleteTodos } from "./TodoSlice";
 import './Todo.css';
 export default function Todo(){
     const [data,setData]=useState({
@@ -23,7 +23,7 @@ export default function Todo(){
     
     
     const [edit,setEdit] = useState(-1);
-    const [search,setSearch] = useState("");
+    //const [search,setSearch] = useState("");
     const todoredux  = useSelector(state=>state.todo);
     //const [todo,SetTodo]= useState();
     const dispatch = useDispatch();
@@ -92,7 +92,7 @@ export default function Todo(){
     };
     
     return(<>
-    <h2 align="center">Todo List</h2>
+    <h2>Todo List</h2>
     <div className="container">
   <div className="row">
     <div className="col-sm-8 col-sm-offset-2">

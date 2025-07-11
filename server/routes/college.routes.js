@@ -1,8 +1,7 @@
-const express=require('express')
-const router = express.Router()
-const college = require('../controllers/college.controllers')
+const express = require("express");
+const router = express.Router();
+const controller = require("../controllers/college.controller");
 
-router.get("/",college.GetFirst50CollegeNames);
-router.get("/bystate/:state",college.GetCollegeByState);
+router.get("/:page?", controller.getColleges);
 
 module.exports = router;

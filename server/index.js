@@ -7,15 +7,13 @@ const app = express() // server initialization
 const port = process.env.PORT;
 
 
-app.use(cors());
+app.use(cors()); // localhost:4000  
 app.use(cookie_parser()) 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use("/todo",require('./routes/todo.routes'))
-app.use("/items",require('./routes/items.routes'))
 app.use("/college",require('./routes/college.routes'))
-
 
 // 3 layer -- client -- server -- database
 
