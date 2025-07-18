@@ -1,11 +1,11 @@
 import './App.css'
-import Todo from './components/Todo'
+import Colleges from './components/Colleges'
 
 function App() {
   
   return (
     <>
-    <Todo />
+    <Colleges />
     </>
   )
 }
