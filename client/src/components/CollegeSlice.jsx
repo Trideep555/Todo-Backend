@@ -8,10 +8,17 @@ export const fetchColleges = createAsyncThunk("college/fetchColleges", async (pa
     return response.data;
 });
 
+export const fetchImages = createAsyncThunk("gallery/fetchImages", async (page=1) => {
+
+    const response = await axios.get(`http://localhost:8000/gallery/${page}`, {responseType: "blob" });
+    return response.data;
+});
+
 export const CollegeSlice = createSlice({
     name:"college",
     initialState:{
         colleges :[] ,
+        image : "",
         status : "Pending",
         totalPages : 0
     },
@@ -28,6 +35,20 @@ export const CollegeSlice = createSlice({
             return state;
         });
         builder.addCase(fetchColleges.rejected, (state) => {
+            state.status = "Rejected";
+            return state;
+        });
+        
+        builder.addCase(fetchImages.pending, (state) => {
+            state.status = "Loading";
+            return state;
+        });
+        builder.addCase(fetchImages.fulfilled, (state, action) => {
+            state.status = "Success";
+            state.image = URL.createObjectURL(action.payload);
+            return state;
+        });
+        builder.addCase(fetchImages.rejected, (state) => {
             state.status = "Rejected";
             return state;
         });
