@@ -11,4 +11,9 @@ const getImage = async (req,res) => {
         res.status(500).send("Error")
     }
 }
-module.exports = { getImage };
+
+const uploadImage = async (req, res) => {
+    console.log(req.file.filename);
+    res.json({ msg: "Successfull"})
+}
+module.exports = { getImage , uploadImage };

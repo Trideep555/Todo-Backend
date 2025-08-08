@@ -14,6 +14,18 @@ export const fetchImages = createAsyncThunk("gallery/fetchImages", async (page=1
     return response.data;
 });
 
+export const uploadImage = createAsyncThunk("gallery/uploadImage", async (file) => {
+ const formData = new FormData();
+ formData.append("image",file);
+
+ const response = await axios.post("http://localhost:8000/gallery", formData, {
+     headers: {
+         "Content-Type": "multipart/form-data"
+     }
+ });
+ return response.data;
+});
+
 export const CollegeSlice = createSlice({
     name:"college",
     initialState:{
