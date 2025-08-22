@@ -16,6 +16,8 @@ app.use(bodyParser.json())
 app.use("/todo",require('./routes/todo.routes'))
 app.use("/college",require('./routes/college.routes'))
 app.use("/gallery",require("./routes/gallery.routes"))
+app.use("/auth",require("./routes/auth.routes"))
+
 // 3 layer -- client -- server -- database
 
 app.listen(port, ()=>{
